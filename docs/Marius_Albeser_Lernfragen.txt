@@ -1,0 +1,40 @@
+1. Was versteht man unter einem Unit Test?
+
+Ein Unit Test validiert einen kleinen Teil eines Programmes auf Qualität und 
+Funktionalität. Grundsätzlich werden im OOP Klassen als Units gesehen.
+Mithilfe des JUnit Framework lassen sich Methoden, Attribute, Konstruktoren und auch Exceptions von Klassen
+nun auf verschiedenste Art und Weise in separaten Test-Klassen prüfen.
+Das JUnit Framework besitzt eine Art Ampel-System, welches dem Entwickler direkt Fehler aufzeigt(rot)/ bzw.
+die Richtigkeit des Codes bestätigt (grün).
+
+Hierdurch gewinnt der Entwickler hohes Vertrauen in die Funktionalität seiner eigenen Software.
+Dokumentation + später bessere Anpassbarkeit und Fehlerfindung bei eventuellen Änderungen des Codes.
+
+2. Wie ist ein Test grundsätzlich aufgebaut?
+
+Nachdem man den Produktionscode z.B. eine Methode mit bestimmter Aufgabe geschrieben hat, wechselt man
+vom Source Folder in separaten Test Ordner. Hier erstellt man eine neue Klasse (Name: Test + gleicher Name der Klasse
+in dem sich die zu testende Methode befindet) und schreibt hier sein Testprogramm/ testet die zuvor erstelle Methode auf Funktionalität.
+Diese testMethode lässt sich über das JUnit Framework ausführen. Danach lässt sich das Testergebnis auswerten.
+
+3. Was bedeutet eine Assertion?
+
+Assertion bedeutet soviel wie eine Behauptung. Das JUnit Framework bzw. in JUnit 3 die Klasse TestCase, kommt
+mit einigen vordefinierten Methoden der assertXXX Familie welche man verwenden kann um seine Methode individuell zu testen.
+z.B. assertEquals(erwarteter Wert, tatsächlicher Wert) --> wenn dieser "Tupel" identisch ist, dann springt das Ampel-System von JUnit auf grün.
+	assertTrue(boolean b) --> Testet ob ein bestimmtes Attribut den gewünschten Objektzustand hat.
+
+4. Was versteht man unter einem Program under Test bzw. Object
+under Test?
+
+OUT Objekte sind die in einer TestKlasse erstellten Objekte auf denen letztendlich die Tests ausgeführt werden.
+Der Zustand dieser Objekte bei Ausführung des Tests spiegeln den Ist-Zustand des Objektes wieder. Dieser Zustand des out Objektes wird 
+in der Bewertungsphase mit dem Soll-Zustand verglichen und analysiert.
+
+
+5. Warum sollten die Test- und Produktionsklassen in denselben
+Packages liegen?
+
+Damit man auch innerhalb der TestKlassen frei auf die zu testenden Methoden, Konstruktoren, Exceptions etc. des Produktionscodes zugreifen kann 
+ohne diese Prouktionsklassen mühseelig jeweils importieren zu müssen. Vereinfacht schlichtweg den Prozess des Testens und macht auch generell einfach Sinn, da
+Produktionscode und Testcode ja quasi voneinander abhängig sind. Die einzig sinnige Trennung ist über den src und test Ordner.
